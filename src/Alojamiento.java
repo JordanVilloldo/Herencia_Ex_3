@@ -1,4 +1,4 @@
-protected abstract class Alojamiento {
+public abstract class Alojamiento {
 
     protected String nombre;
 

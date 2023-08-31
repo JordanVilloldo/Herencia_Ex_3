@@ -1,4 +1,4 @@
-protected abstract class Hotel extends Alojamiento {
+public abstract class Hotel extends Alojamiento {
 
     protected int cantHabitaciones;
 
