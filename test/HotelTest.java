@@ -58,7 +58,7 @@ public class HotelTest {
         System.out.println("valorRestaurante");
         
         Restaurante r = new Restaurante("nombre",10);
-        Hotel h = new Hotel();
+        //Hotel h = new Hotel();
         
         Hotel instance = new HotelImpl();
         

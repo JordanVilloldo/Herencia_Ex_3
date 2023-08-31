@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  *
  * @author Jordan
  */
-public class RestauranteTest {
+public class DireccionTest {
     
-    Restaurante r;
+    Direccion d;
     
-    public RestauranteTest() {
+    public DireccionTest() {
     }
     
     @BeforeClass
@@ -40,10 +40,10 @@ public class RestauranteTest {
 
     @Test
     public void testConstructor() {
-        r = new Restaurante("a",20);
         
-        assertEquals(r.getNombre(),"a");
-        assertEquals(r.getCapacidad(),20);
+        d = new Direccion("calle", "ciudad");
+        
+        assertEquals(d.getCalle(),"calle");
     }
     
 }
