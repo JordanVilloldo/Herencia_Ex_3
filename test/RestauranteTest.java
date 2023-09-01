@@ -44,6 +44,10 @@ public class RestauranteTest {
         
         assertEquals(r.getNombre(),"a");
         assertEquals(r.getCapacidad(),20);
+        
+        //negative path
+        assertNotEquals(r.getNombre(),"as");
+        assertNotEquals(r.getCapacidad(),22);
     }
     
 }

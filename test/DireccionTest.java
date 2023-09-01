@@ -44,6 +44,12 @@ public class DireccionTest {
         d = new Direccion("calle", "ciudad");
         
         assertEquals(d.getCalle(),"calle");
+        assertEquals(d.getCiudad(),"ciudad");
+        
+        
+        assertNotEquals(d.getCalle(), "calee");
+        assertNotEquals(d.getCiudad(), "calee");
+        
     }
     
 }

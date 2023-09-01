@@ -17,21 +17,23 @@ import static org.junit.Assert.*;
  */
 public class HotelTest {
     
+    Restaurante r;
+
     public HotelTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -42,12 +44,19 @@ public class HotelTest {
     @Test
     public void testPrecioHabitacion() {
         System.out.println("precioHabitacion");
-        Hotel instance = new HotelImpl();
-        int expResult = 0;
-        int result = instance.precioHabitacion();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Hotel h = new HotelImpl();
+        r = new Restaurante("nombre", 29);
+        /*
+        PrecioHabitación = $50 + ($1 x capacidad del hotel) + (valor agregado por restaurante) + (valor
+agregado por gimnasio) + (valor agregado por limosinas).
+         */
+        
+        
+        //50 + 1 + 10 + 50 + 15 = 126
+        assertEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),126);
+        
+        //Negativo
+        assertNotEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),120);
     }
 
     /**
@@ -56,17 +65,31 @@ public class HotelTest {
     @Test
     public void testValorRestaurante() {
         System.out.println("valorRestaurante");
-        
-        Restaurante r = new Restaurante("nombre",10);
-        //Hotel h = new Hotel();
-        
-        Hotel instance = new HotelImpl();
-        
-        int expResult = 0;
-        int result = instance.valorRestaurante();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //29 30 40 50 51
+        mockHotel h = new mockHotel();
+
+        //29
+        r = new Restaurante("nombre", 29);
+        assertEquals(h.valorRestaurante(r), 10);
+        //negativo
+        assertEquals(h.valorRestaurante(r), 70);
+
+        //30
+        r.setCapacidad(30);
+        assertEquals(h.valorRestaurante(r), 30);
+
+        //40
+        r.setCapacidad(40);
+        assertEquals(h.valorRestaurante(r), 30);
+
+        //50
+        r.setCapacidad(50);
+        assertEquals(h.valorRestaurante(r), 50);
+
+        //51
+        r.setCapacidad(51);
+        assertEquals(h.valorRestaurante(r), 50);
+
     }
 
     /**
@@ -75,12 +98,19 @@ public class HotelTest {
     @Test
     public void testValorGimnasio() {
         System.out.println("valorGimnasio");
-        Hotel instance = new HotelImpl();
-        int expResult = 0;
-        int result = instance.valorGimnasio();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        mockHotel h = new mockHotel();
+
+        //50 A , 30 B
+        //50 A
+        assertEquals(h.valorGimnasio(Gimnasio.A), 50);
+        //Negativo
+        assertNotEquals(h.valorGimnasio(Gimnasio.A), 30);
+
+        //30 B
+        assertEquals(h.valorGimnasio(Gimnasio.B), 30);
+        //negativo
+        assertNotEquals(h.valorGimnasio(Gimnasio.B), 50);
+
     }
 
     /**
@@ -89,15 +119,16 @@ public class HotelTest {
     @Test
     public void testValorLimosina() {
         System.out.println("valorLimosina");
-        Hotel instance = new HotelImpl();
-        int expResult = 0;
-        int result = instance.valorLimosina();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        mockHotel h = new mockHotel();
+
+        assertEquals(h.valorLimosina(0), 0);
+        assertEquals(h.valorLimosina(1), 15);
+        assertEquals(h.valorLimosina(5), 75);
+        assertEquals(h.valorLimosina(-3), 0);
+
     }
 
     public class HotelImpl extends Hotel {
     }
-    
+
 }
