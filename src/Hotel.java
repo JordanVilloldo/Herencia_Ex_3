@@ -8,16 +8,16 @@ public abstract class Hotel extends Alojamiento {
 
     protected int precioHabitaciones;
 
-    protected Gimnasio gimnasio;
+    protected boolean gimnasio;
 
     public Hotel() {
     }
 
-    public Hotel(int cantHabitaciones, int numCamas, int cantPisos, int precioHabitaciones, Gimnasio gimnasio) {
+    public Hotel(int cantHabitaciones, int numCamas, int cantPisos, boolean gimnasio, String nombre, Direccion direccion, String gerente) {
+        super(nombre, direccion, gerente);
         this.cantHabitaciones = cantHabitaciones;
         this.numCamas = numCamas;
         this.cantPisos = cantPisos;
-        this.precioHabitaciones = precioHabitaciones;
         this.gimnasio = gimnasio;
     }
     
@@ -47,37 +47,38 @@ public abstract class Hotel extends Alojamiento {
         this.cantPisos = cantPisos;
     }
 
-    public int getPrecioHabitaciones() {
-        return precioHabitaciones;
-    }
 
-    public void setPrecioHabitaciones(int precioHabitaciones) {
-        this.precioHabitaciones = precioHabitaciones;
-    }
-
-    public Gimnasio getGimnasio() {
+    public boolean isGimnasio() {
         return gimnasio;
     }
 
-    public void setGimnasio(Gimnasio gimnasio) {
+    public void setGimnasio(boolean gimnasio) {
         this.gimnasio = gimnasio;
     }
+
+    @Override
+    public String toString() {
+        return "Hotel: " + nombre + ", Habitaciones: " + cantHabitaciones + ", Camas: " + numCamas + ", Pisos: " + cantPisos + ", precio: $" + precioHabitaciones + ", gimnasio=" + gimnasio + '}';
+    }
+
     
     
 
-    public int precioHabitacion(int cantHabitaciones, int valorRestaurante, int valorGimnasio, int valorLimosina) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int precioHabitacion() {
+        
+        /*
+        $50 + ($1 x capacidad del hotel) + (valor agregado por restaurante) + (valor
+agregado por gimnasio) + (valor agregado por limosinas).
+        */
+        return 50 + cantHabitaciones + valorGimnasio(this.gimnasio);
     }
 
-    public int valorRestaurante(Restaurante r) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+
+    public int valorGimnasio(boolean g) {
+        int valorAgregadoGimnasio = g ? 50 : 30;
+        return valorAgregadoGimnasio;
     }
 
-    public int valorGimnasio(Gimnasio g) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
-    public int valorLimosina(int cantLimosina) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

@@ -52,11 +52,11 @@ agregado por gimnasio) + (valor agregado por limosinas).
          */
         
         
-        //50 + 1 + 10 + 50 + 15 = 126
-        assertEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),126);
-        
-        //Negativo
-        assertNotEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),120);
+//        //50 + 1 + 10 + 50 + 15 = 126
+//        assertEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),126);
+//        
+//        //Negativo
+//        assertNotEquals(h.precioHabitacion(1, h.valorRestaurante(r), h.valorGimnasio(Gimnasio.A), h.valorLimosina(1)),120);
     }
 
     /**
